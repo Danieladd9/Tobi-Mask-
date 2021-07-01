@@ -42,13 +42,55 @@ function draw() {
 }
 
 function drawFullFaceCovering() {
+
   beginShape();
+  //changed color to fire orange for obitos face
+  fill(255, 119, 0);
+  noStroke();
+  //ffunction for spiral on facemask
+  // drawSpiral();
   // "silhouette" is the outline of the whole face mesh
   latestPrediction.annotations.silhouette.forEach((point) => {
     curveVertex(point[0 /* x */], point[1 /* y */]);
   });
   endShape(CLOSE);
+  // drawSpiral()
 }
+
+function drawSpiral() {
+  let a = 1.5;
+  let b = 0.5;
+  stroke(255);
+  noFill();
+  
+  translate(width/2, height/2);
+  beginShape();
+    for (let i = 0; i < 360*2; i ++) {
+      //let t = seq(0,5*pi, length.out=500);
+      let x = (a + b*i) * cos(i);
+      let y = (a + b*i) * sin(i);
+      vertex(x, y);
+    }
+  endShape();
+}
+//---
+// function drawSpiral() {
+//   oldX = c.width/2;
+//   oldY = c.height/2;
+  
+//   for (let i=0; i<size; i++) {
+//     newAngle = (angle/10) * i;
+//     x = (c.width/2) + (spiralWidth * newAngle) * Math.sin(newAngle);
+//     y = (c.height/2) + (spiralWidth * newAngle) * Math.cos(newAngle);
+    
+//     // stroke(randomColor()); // Random Color for each line segment
+//     // strokeWeight(randomWeight()); // Random Weight (1-5)
+    
+//     line(oldX, oldY, x, y);
+//     oldX = x;
+//     oldY = y;
+//   }
+// }
 
 function createEyeholeMask() {
   let eyeholeMask = createGraphics(width, height); // draw into a "graphics" object instead of the canvas directly
@@ -74,4 +116,5 @@ function createEyeholeMask() {
   eyeholeMask.endShape(CLOSE); // CLOSE makes sure we join back to the beginning
 
   return eyeholeMask;
+
 }
