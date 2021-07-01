@@ -64,10 +64,10 @@ image(faceCovering, 0, 0);
 function drawSpiral() {
   let spiral = createGraphics(width, height);
   spiral.push();
-  let a = 0.5;
-  let b = 0.5;
+  let a = 1.5;
+  let b = 4;
   let rightEye = latestPrediction.annotations.rightEyeUpper0[0];
-  spiral.stroke(255);
+  spiral.stroke(0);
  spiral. noFill();
   
   spiral.translate(rightEye[0], rightEye[1]);
