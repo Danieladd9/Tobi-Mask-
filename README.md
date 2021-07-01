@@ -1,7 +1,7 @@
 Obito’s second mask is orange and black, the color scheme of the Nine Tails, which Obito manipulates into attacking Konoha. The stripes on the mask remind me of a tiger’s stripes, which could be a reference the Uchiha clan’s natural ability to use fire-style, as most fire style moves are affiliated with the tiger hand sign.
 
 Link to try out Tobi's Mask
-vvvvvvvvvvvvvvvvvvvvvvv
+---------------------------
 https://danieladd9.github.io/Tobi-Mask-/
 
 ## Get started
