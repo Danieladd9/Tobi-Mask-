@@ -42,36 +42,48 @@ function draw() {
 }
 
 function drawFullFaceCovering() {
-
-  beginShape();
+let faceCovering = createGraphics(width, height);
+faceCovering.beginShape()
   //changed color to fire orange for obitos face
-  fill(255, 119, 0);
-  noStroke();
+ faceCovering.fill(255, 119, 0);
+faceCovering.noStroke();
   //ffunction for spiral on facemask
   // drawSpiral();
   // "silhouette" is the outline of the whole face mesh
   latestPrediction.annotations.silhouette.forEach((point) => {
-    curveVertex(point[0 /* x */], point[1 /* y */]);
+  faceCovering.curveVertex(point[0 /* x */], point[1 /* y */]);
   });
-  endShape(CLOSE);
-  // drawSpiral()
+ faceCovering.endShape(CLOSE);
+image(faceCovering, 0, 0);
+   let spiral = drawSpiral()
+   spiral.mask(faceCovering);
+   image(spiral, 0, 0);
+
 }
 
 function drawSpiral() {
-  let a = 1.5;
+  let spiral = createGraphics(width, height);
+  spiral.push();
+  let a = 0.5;
   let b = 0.5;
-  stroke(255);
-  noFill();
+  let rightEye = latestPrediction.annotations.rightEyeUpper0[0];
+  spiral.stroke(255);
+ spiral. noFill();
   
-  translate(width/2, height/2);
-  beginShape();
+  spiral.translate(rightEye[0], rightEye[1]);
+  spiral.beginShape();
     for (let i = 0; i < 360*2; i ++) {
       //let t = seq(0,5*pi, length.out=500);
       let x = (a + b*i) * cos(i);
       let y = (a + b*i) * sin(i);
-      vertex(x, y);
+      spiral.vertex(x, y);
     }
-  endShape();
+  spiral.endShape();
+  spiral.pop()
+  let spiralImage = createImage(width, height);
+  spiralImage.copy(spiral, 0, 0, width, height, 0, 0, width, height);
+  return spiralImage;
+  // translate(0, 0); -not needed
 }
 //---
 // function drawSpiral() {
