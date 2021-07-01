@@ -1,3 +1,5 @@
+//based on Ashwin's Eyehole.js 
+
 let video;
 let latestPrediction = null;
 
