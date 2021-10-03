@@ -1,6 +1,6 @@
 Link to try out Obito's Tobi Mask
 ----------------------------------
-https://danieladd9.github.io/Tobi-Mask-/
+https://danieladdsn.github.io/Tobi-Mask-/
 
 ## Get started
 
